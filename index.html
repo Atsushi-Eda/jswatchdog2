@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jswatchdog2</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+    <div id="input">
+      <div class="header">
+        <p class="title">Enter your JS code here</p>
+      </div>
+      <div id="editor"></div>
+    </div>
+    <div id="output">
+      <div class="header">
+        <p class="title">Review result</p>
+        <label>ES version: <select id="version"></select></label>
+      </div>
+      <div id="console"></div>
+    </div>
+  </div>
+  <script src="//js.cybozu.com/ace/v1.4.1/ace.js"></script>
+  <script src="//js.cybozu.com/ace/v1.4.1/ext-language_tools.js"></script>
+  <script src="dist/config.js"></script>
+  <script src="dist/bundle.js"></script>
+</body>
+</html>

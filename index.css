@@ -1,0 +1,64 @@
+html,
+body,
+div,
+p{
+  margin: 0;
+  padding: 0;
+}
+body{
+  box-sizing: border-box;
+  height: 100vh;
+  padding: .5rem;
+}
+.container{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#input,
+#output{
+  height: 100%;
+  width: calc(50% - 1rem);
+  box-sizing: border-box;
+}
+.header{
+  padding: .5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.title{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+#editor,
+#console{
+  height: calc(100% - 3.5rem);
+  border: .2rem solid;
+  padding: .5rem;
+  box-sizing: border-box;
+}
+#editor{
+  border-color: #206694;
+}
+#console{
+  border-color: #357064;
+  overflow-y: scroll;
+}
+.warning,
+.error{
+  padding: 5px;
+}
+.warning{
+  color: #f0ad4e;
+}
+.error{
+  color: #a94442;
+}
+.lgtm {
+  background-color: #dff0d8;
+  border: 1px solid #d6e9c6;
+  border-radius: 3px;
+  color: #468847;
+  padding: 15px;
+  font-weight: bold;
+}
