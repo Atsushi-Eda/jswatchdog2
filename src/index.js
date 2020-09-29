@@ -8,7 +8,7 @@
   });
 
   const editor = ace.edit('editor');
-  const consoleBox = document.getElementById('console');
+  const consoleElement = document.getElementById('console');
   editor.getSession().setMode('ace/mode/javascript');
   editor.getSession().setUseWorker(false);
   editor.getSession().setTabSize(2);
@@ -27,24 +27,24 @@
   const validate = () => {
     const code = editor.getSession().getValue();
     const splitCode = code.split('\n');
-    const errors = linter.verify(
+    const checks = linter.verify(
       code,
       eslintConfigs[versionSelect.value]
-    ).filter((error) =>
-      !error.message.match(/^Definition for rule .* was not found.$/) && error.ruleId !== "linebreak-style"
+    ).filter((check) =>
+      !check.message.match(/^Definition for rule .* was not found.$/) && check.ruleId !== "linebreak-style"
     );
-    consoleBox.innerHTML = '';
-    errors.forEach((error) => {
-      const errorBox = document.createElement('p');
-      errorBox.innerText = `Line ${error.line}, ${error.message}\n${splitCode[error.line-1]}`;
-      errorBox.classList.add(error.severity === 1 ? 'warning' : 'error');
-      consoleBox.appendChild(errorBox);
+    consoleElement.innerHTML = '';
+    checks.forEach((check) => {
+      const checkElement = document.createElement('p');
+      checkElement.innerText = `Line ${check.line}, ${check.message} (${check.ruleId})\n${splitCode[check.line-1]}`;
+      checkElement.classList.add(check.severity === 1 ? 'warning' : 'error');
+      consoleElement.appendChild(checkElement);
     });
-    if(!errors.length) {
-      const errorBox = document.createElement('div');
-      errorBox.innerText = '✓ Looks good to me!';
-      errorBox.classList.add('lgtm');
-      consoleBox.appendChild(errorBox);
+    if(!checks.length) {
+      const checkElement = document.createElement('div');
+      checkElement.innerText = '✓ Looks good to me!';
+      checkElement.classList.add('lgtm');
+      consoleElement.appendChild(checkElement);
     }
   }
   versionSelect.addEventListener('change', validate)
