@@ -23,6 +23,7 @@
   },
   "scripts": {
     "build": "webpack --mode production",
+    "start": "webpack-dev-server",
     "watch": "webpack --mode development --watch",
     "build-config": "node bin/build-config.js"
   }
